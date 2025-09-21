@@ -1,7 +1,11 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
-    baseURL : "http://localhost:5001/api"
-})
+// in production, there's no localhost so we have to make this dynamic
+const BASE_URL =
+  import.meta.env.MODE === "development" ? "http://localhost:5001/api" : "/api";
 
-export default axiosInstance
+const axiosInstance = axios.create({
+  baseURL: "http://localhost:5001/api",
+});
+
+export default axiosInstance;
